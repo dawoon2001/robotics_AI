@@ -23,6 +23,9 @@ source /opt/ros/humble/setup.bash
 LED 제어
 
 ros2 topic pub /duckie_led_control std_msgs/msg/String "{data: 'red'}" -1
+ros2 topic pub /duckie_led_control std_msgs/msg/String "{data: 'green'}" -1
+ros2 topic pub /duckie_led_control std_msgs/msg/String "{data: 'blue'}" -1
+ros2 topic pub /duckie_led_control std_msgs/msg/String "{data: 'white'}" -1
 
 -------------------------------------------------
 고수준 모터 제어
