@@ -30,9 +30,9 @@ class RedCubeFollower(Node):
         self.bridge = CvBridge()
 
         # ===== 튜닝 파라미터 =====
-        self.k_ang = 1.2              # 회피 회전 민감도
+        self.k_ang = 1.2
         self.max_ang = 1.5            # 최대 각속도
-        self.fwd_speed = 0.15         # (회피 중에도) 기본 전진 속도
+        self.fwd_speed = 0.15         # 기본 전진 속도
 
         self.center_deadband = 0.12   # 중앙 허용 오차
         self.stop_area = 250000       # (원하면) 너무 가까우면 정지 (중앙일 때만)
@@ -98,16 +98,15 @@ class RedCubeFollower(Node):
 
         err = (cx - (w / 2.0)) / (w / 2.0)  # -1 ~ +1
 
-        # ===== 회피 로직 =====
         # deadband 안이면 회전 안함(그냥 전진)
         if abs(err) < self.center_deadband:
             ang = 0.0
         else:
-            # ✅ [핵심] 회피 방향: 큐브 반대 방향으로 회전
+            # ✅ [핵심] 큐브 방향으로 회전
             ang = -self.k_ang * err
             ang = float(np.clip(ang, -self.max_ang, self.max_ang))
 
-        # 기본 전진(회피 중에도 계속 전진)
+        # 기본 전진
         lin = self.fwd_speed
 
         # (선택) 너무 가까운데 "정면"이면 정지
