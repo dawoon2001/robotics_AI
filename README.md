@@ -1,6 +1,16 @@
 # robotics_AI
 final project
 
+1) 파일 소개
+
+
+- duckie_isaac에는 인터넷에서 구할 수 있는 duckiebot의 원형인 "duckiebot.urdf"가 포함되어 있다. 이를 불러와서 작업하였다.
+- src/duckie_vision_control에는 카메라 제어를 위한 파이썬 코드가 들어있다.
+
+
+2) Ubuntu에서 사용하는 코드 모음
+
+
 ros 접근
 
 source ~/ros2_ws/install/setup.bash
@@ -35,3 +45,5 @@ ros2 topic echo /duckie/camera/image_raw --once
 큐브 감지 로봇 제어
 
 ros2 run duckie_vision_control red_cube_follower
+
+-------------------------------------------------
